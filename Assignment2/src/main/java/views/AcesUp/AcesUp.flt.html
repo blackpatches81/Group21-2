@@ -21,8 +21,8 @@
             <h6>Column One</h6>
             <div class="col-lg-12" id="column-0">
 
-
             </div>
+            
         </div>
         <div class="col-lg-3">
             <!-- Column Two !-->
@@ -30,6 +30,7 @@
             <div class="col-lg-12" id="column-1">
 
             </div>
+
         </div>
         <div class="col-lg-3">
             <!-- Column Three !-->
@@ -37,6 +38,7 @@
             <div class="col-lg-12" id="column-2">
 
             </div>
+
         </div>
         <div class="col-lg-3">
             <!-- Column Four !-->
@@ -44,6 +46,7 @@
             <div class="col-lg-12" id="column-3">
 
             </div>
+
         </div>
     </div>
 </div>
@@ -55,11 +58,12 @@
         </div>
         <div class="col-lg-4">
             <!-- Place Delete and Deal button !-->
-            Delete and Deal
+
         </div>
         <div class="col-lg-4">
             <!-- Place deck counter !-->
-            Deck counter
+            Deck counter: <span class="counter text-success"></span>
+
         </div>
     </div>
 </div>
@@ -321,6 +325,8 @@
 
     function display(game) {
         console.log(game);
+
+        $('.counter').html(game['deck'].length);
 
         $('.columnOfCards .cardLocation').html("");
 
