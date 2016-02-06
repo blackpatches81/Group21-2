@@ -21,8 +21,8 @@
             <h6>Column One</h6>
             <div class="col-lg-12" id="column-0">
 
-
             </div>
+            
         </div>
         <div class="col-lg-3">
             <!-- Column Two !-->
@@ -30,6 +30,7 @@
             <div class="col-lg-12" id="column-1">
 
             </div>
+
         </div>
         <div class="col-lg-3">
             <!-- Column Three !-->
@@ -37,6 +38,7 @@
             <div class="col-lg-12" id="column-2">
 
             </div>
+
         </div>
         <div class="col-lg-3">
             <!-- Column Four !-->
@@ -44,6 +46,7 @@
             <div class="col-lg-12" id="column-3">
 
             </div>
+
         </div>
     </div>
 </div>
@@ -55,11 +58,12 @@
         </div>
         <div class="col-lg-4">
             <!-- Place Delete and Deal button !-->
-            Delete and Deal
+            <button class="btn" id="dealButton">Deal</button>
         </div>
         <div class="col-lg-4">
             <!-- Place deck counter !-->
-            Deck counter
+            Deck counter: <span class="counter text-success"></span>
+
         </div>
     </div>
 </div>
@@ -82,7 +86,7 @@
                 <p><strong>Note: </strong> Aces are high</p>
                 <ol>
                     <li>Deal four cards in a row face up.</li>
-                    <li>If there are two or ore cards of the smae suit, discard all but the highest-ranked card of that
+                    <li>If there are two or ore cards of the same suit, discard all but the highest-ranked card of that
                         suit.
                     </li>
                     <li>Repeat step 2 until there are no more pairs of cards with the same suit.</li>
@@ -322,6 +326,8 @@
     function display(game) {
         console.log(game);
 
+        $('.counter').html(game['deck'].length);
+
         $('.columnOfCards .cardLocation').html("");
 
         $.each(game.cols[0], function (key, val) {
@@ -396,8 +402,8 @@
         game = data;
     });
 
-
     $("#dealButton").click(function () {
+        $( ".card" ).remove();
         $.ajax({
             type: "POST",
             url: "/dealGame",
