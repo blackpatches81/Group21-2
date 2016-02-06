@@ -58,7 +58,7 @@
         </div>
         <div class="col-lg-4">
             <!-- Place Delete and Deal button !-->
-
+            <button class="btn" id="dealButton">Deal</button>
         </div>
         <div class="col-lg-4">
             <!-- Place deck counter !-->
@@ -86,7 +86,7 @@
                 <p><strong>Note: </strong> Aces are high</p>
                 <ol>
                     <li>Deal four cards in a row face up.</li>
-                    <li>If there are two or ore cards of the smae suit, discard all but the highest-ranked card of that
+                    <li>If there are two or ore cards of the same suit, discard all but the highest-ranked card of that
                         suit.
                     </li>
                     <li>Repeat step 2 until there are no more pairs of cards with the same suit.</li>
@@ -402,8 +402,8 @@
         game = data;
     });
 
-
     $("#dealButton").click(function () {
+        $( ".card" ).remove();
         $.ajax({
             type: "POST",
             url: "/dealGame",
