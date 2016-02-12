@@ -1,0 +1,20 @@
+# Setting Sudo (false)
+sudo: flase
+
+# Adding language specification
+language: java
+
+# Selecting java enviorment
+jdk:
+    - oraclejdk8
+
+# Specifing maven dependency
+mvn install -DskipTests=ture
+
+script: mvn verify -U -Dmaven.javadoc.skip=true
+
+# Setting cashe locaion
+cache:
+  directories:
+  - $HOME/.m2
+
