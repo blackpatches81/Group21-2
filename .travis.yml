@@ -9,12 +9,8 @@ jdk:
     - oraclejdk8
 
 # Specifing maven dependency
-mvn install -DskipTests=ture
+install: mvn install -U -DskipTests=true
 
 script: mvn verify -U -Dmaven.javadoc.skip=true
 
-# Setting cashe locaion
-cache:
-  directories:
-  - $HOME/.m2
 
