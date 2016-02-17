@@ -8,17 +8,11 @@ import java.util.Random;
 /**
  * Created by nathan on 2/15/16.
  */
-public class Deck {
+public abstract class Deck {
 
     public java.util.List<Card> deck = new ArrayList<>();
-    public void build(){
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
-    }
+
+    abstract void build();
 
     public void shuffle(){
         long seed = System.nanoTime();
@@ -30,4 +24,5 @@ public class Deck {
         deck.remove(deck.size() - 1);
         return card;
     }
+
 }
