@@ -30,8 +30,8 @@ public class testEsDeck {
         d.build();
 
         // Assert
-        assertNotEquals(null, d.deck);
-        assertEquals(40, d.deck.size());
+        assertNotEquals(null, d.cards);
+        assertEquals(40, d.cards.size());
 
     }
 
@@ -47,7 +47,7 @@ public class testEsDeck {
         shuffeled.shuffle();
 
         // Assert
-        assertNotEquals(unshuffled.deck, shuffeled.deck);
+        assertNotEquals(unshuffled.cards, shuffeled.cards);
 
     }
 
