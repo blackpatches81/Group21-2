@@ -8,11 +8,11 @@ import java.util.Random;
 /**
  * Created by nathan on 2/15/16.
  */
-public abstract class Deck {
+public class Deck {
 
     public java.util.List<Card> cards = new ArrayList<>();
 
-    public abstract void build();
+    public void build() { }
 
     public void shuffle(){
         long seed = System.nanoTime();
