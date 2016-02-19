@@ -9,31 +9,112 @@ import java.util.Random;
  */
 public class Game {
 
-    /*public java.util.List<Card> deck = new ArrayList<>();*/
-    public Deck deck;
-
+    public java.util.List<Card> deck = new ArrayList<>();
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>();
 
 
     public Game(){
-        // Build english deck by default
-        deck = new EnDeck();
-        deck.build();
-
-        // Create game columns
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
     }
 
-    /* * * * * Public Methods * * * * */
-    public void dealFour() {
-        for(int i = 0; i < 4; i++){
-            cols.get(i).add(deck.deal());
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //I like space between my methods
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void buildDeck() {
+        for(int i = 2; i < 15; i++){
+            deck.add(new Card(i,Suit.Clubs));
+            deck.add(new Card(i,Suit.Hearts));
+            deck.add(new Card(i,Suit.Diamonds));
+            deck.add(new Card(i,Suit.Spades));
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    //I like space between my methods
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void shuffle() {
+        long seed = System.nanoTime();
+        Collections.shuffle(deck, new Random(seed));
+    }
+
+    public void dealFour() {
+        for(int i = 0; i < 4; i++){
+            cols.get(i).add(deck.get(deck.size()-1));
+            deck.remove(deck.size()-1);
+        }
+    }
+
+    //customDeal to setup game for testing purposes
+    public void customDeal(int c1, int c2, int c3, int c4) {
+        cols.get(0).add(deck.get(c1));
+        deck.remove(c1);
+        cols.get(1).add(deck.get(c2));
+        deck.remove(c2);
+        cols.get(2).add(deck.get(c3));
+        deck.remove(c3);
+        cols.get(3).add(deck.get(c4));
+        deck.remove(c4);
+    }
+
     public void remove(int columnNumber) {
         if(colHasCards(columnNumber)) {
             Card c = getTopCard(columnNumber);
@@ -56,6 +137,18 @@ public class Game {
         }
     }
 
+    private boolean colHasCards(int colNumber) {
+        if(this.cols.get(colNumber).size()>0){
+            return true;
+        }
+        return false;
+    }
+
+    private Card getTopCard(int columnNumber) {
+        return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
+    }
+
+
     public void move(int colFrom, int colTo) {
         Card cardToMove = getTopCard(colFrom);
         this.removeCardFromCol(colFrom);
@@ -68,31 +161,9 @@ public class Game {
 
     private void removeCardFromCol(int colFrom) {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
-    }
 
-    /* * * * * Private Methods * * * * */
-    private boolean colHasCards(int colNumber) {
-        if(this.cols.get(colNumber).size()>0){
-            return true;
-        }
-        return false;
-    }
+        //I think that should conflict...
+        //Did it work yet?
 
-    private Card getTopCard(int columnNumber) {
-        return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
-
-    /* * * * * Testing Methods * * * * */
-    //customDeal to setup game for testing purposes
-    public void customDeal(int c1, int c2, int c3, int c4) {
-        cols.get(0).add(deck.cards.get(c1));
-        deck.cards.remove(c1);
-        cols.get(1).add(deck.cards.get(c2));
-        deck.cards.remove(c2);
-        cols.get(2).add(deck.cards.get(c3));
-        deck.cards.remove(c3);
-        cols.get(3).add(deck.cards.get(c4));
-        deck.cards.remove(c4);
-    }
-
 }
