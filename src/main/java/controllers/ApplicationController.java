@@ -42,6 +42,7 @@ public class ApplicationController {
         g.shuffle();
         g.dealFour();
 
+
         return Results.json().render(g);
     }
 
@@ -63,4 +64,12 @@ public class ApplicationController {
         return  Results.json().render(g);
     }
 
+    //deck controller
+   public Result chooseDeck(Context context, @PathParam("decktype") int deck, Game g){
+        g = new Game(deck);
+        g.buildDeck();
+        g.shuffle();
+        g.dealFour();
+        return  Results.json().render(g);
+    }
 }
