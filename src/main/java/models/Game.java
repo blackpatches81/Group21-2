@@ -9,20 +9,52 @@ import java.util.Random;
  */
 public class Game {
 
-    public Deck deck;
+    public java.util.List<Card> deck = new ArrayList<>();
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>();
 
 
-    public Game(int decktype){
-
-        deck = new Deck(decktype);
-
+    public Game(){
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //I like space between my methods
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void buildDeck() {
         for(int i = 2; i < 15; i++){
@@ -32,6 +64,32 @@ public class Game {
             deck.add(new Card(i,Suit.Spades));
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    //I like space between my methods
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void shuffle() {
         long seed = System.nanoTime();
@@ -103,6 +161,9 @@ public class Game {
 
     private void removeCardFromCol(int colFrom) {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
+
+        //I think that should conflict...
+        //Did it work yet?
 
     }
 }

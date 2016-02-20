@@ -61,7 +61,6 @@
             <button class="btn" id="moveButton">Move</button>
             <button class="btn" id="resetButton">Reset</button>
         </div>
-        <button class="btn" id="deckButton">ES</button>
         <div class="col-lg-4">
             <!-- Place Delete and Deal button !-->
             <button class="btn" id="dealButton">Deal</button>
@@ -439,22 +438,6 @@
         });
 
     }
-
-    $("#deckButton").click(function () { 
-        $('.card').remove();
-        $.ajax({
-            type: "POST",
-            url: "/deckType:1"
-            data: JSON.stringify(game),
-            success: function (data, status) {
-                console.log("Data: " + data + "\nStatus: " + status);
-                game = data;
-                display(data);
-            },
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-        });
-    });
 
      $("#resetButton").click(function () { 
         $('.card').remove();
