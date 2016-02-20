@@ -29,7 +29,7 @@ public class testEnDeck {
         d.build();
 
         // Assert
-        assertNotEquals(null, d.deck);
+        assertNotEquals(null, d.cards);
 
     }
 
@@ -45,7 +45,7 @@ public class testEnDeck {
         shuffeled.shuffle();
 
         // Assert
-        assertNotEquals(unshuffled.deck, shuffeled.deck);
+        assertNotEquals(unshuffled.cards, shuffeled.cards);
 
     }
 
