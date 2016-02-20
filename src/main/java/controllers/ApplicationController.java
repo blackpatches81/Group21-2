@@ -45,6 +45,15 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
+    //deck controller
+    public Result chooseDeck(Context context, @PathParam("deckType") String deck, Game g){
+        g = new Game("es");
+        g.deck.build();
+        g.deck.shuffle();
+        g.dealFour();
+        return  Results.json().render(g);
+    }
+
     public Result dealPost(Context context, Game g) {
         if(context.getRequestPath().contains("deal")){
             g.dealFour();

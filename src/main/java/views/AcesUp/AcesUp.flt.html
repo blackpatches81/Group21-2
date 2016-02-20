@@ -60,10 +60,13 @@
             To: <input type="text" id="to_col" /><br />
             <button class="btn" id="moveButton">Move</button>
             <button class="btn" id="resetButton">Reset</button>
+            <button class="btn" id="deckButton">ES</button>
         </div>
+
         <div class="col-lg-4">
             <!-- Place Delete and Deal button !-->
             <button class="btn" id="dealButton">Deal</button>
+
         </div>
         <div class="col-lg-4">
             <!-- Place deck counter !-->
@@ -131,10 +134,10 @@
 
         $.each(game.cols[0], function (key, val) {
             var color = null;
-            if(val.suit == "Hearts" || val.suit == "Diamonds" ){
+            if(val.suit == "Hearts" || val.suit == "Diamonds" || val.suit == "Coins" || val.suit == "Swords"){
                 color = 'card-value-red';
             }
-            else if(val.suit == "Clubs" || val.suit == "Spades"){
+            else if(val.suit == "Clubs" || val.suit == "Spades" || val.suit == "Cups"){
                 color = 'card-value-black';
             }
             $('#column-0').append(
@@ -147,10 +150,10 @@
 
         $.each(game.cols[1], function (key, val) {
             var color = null;
-            if(val.suit == "Hearts" || val.suit == "Diamonds" ){
+            if(val.suit == "Hearts" || val.suit == "Diamonds" || val.suit == "Coins" || val.suit == "Swords"){
                 color = 'card-value-red';
             }
-            else if(val.suit == "Clubs" || val.suit == "Spades"){
+            else if(val.suit == "Clubs" || val.suit == "Spades" || val.suit == "Cups"){
                 color = 'card-value-black';
             }
             $('#column-1').append(
@@ -163,10 +166,10 @@
 
         $.each(game.cols[2], function (key, val) {
             var color = null;
-            if(val.suit == "Hearts" || val.suit == "Diamonds" ){
+            if(val.suit == "Hearts" || val.suit == "Diamonds" || val.suit == "Coins" || val.suit == "Swords"){
                 color = 'card-value-red';
             }
-            else if(val.suit == "Clubs" || val.suit == "Spades"){
+            else if(val.suit == "Clubs" || val.suit == "Spades" || val.suit == "Cups"){
                 color = 'card-value-black';
             }
             $('#column-2').append(
@@ -179,10 +182,10 @@
 
         $.each(game.cols[3], function (key, val) {
             var color = null;
-            if(val.suit == "Hearts" || val.suit == "Diamonds" ){
+            if(val.suit == "Hearts" || val.suit == "Diamonds" || val.suit == "Coins" || val.suit == "Swords"){
                 color = 'card-value-red';
             }
-            else if(val.suit == "Clubs" || val.suit == "Spades"){
+            else if(val.suit == "Clubs" || val.suit == "Spades" || val.suit == "Cups"){
                 color = 'card-value-black';
             }
             $('#column-3').append(
@@ -283,6 +286,23 @@
             dataType: "json",
         });
     });
+
+    $("#deckButton").click(function () { 
+    $('.card').remove();
+    $.ajax({
+        type: "POST",
+        url: "/deckType/es",
+        data: JSON.stringify(game),
+        success: function (data, status) {
+            console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);
+        },
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+    });
+});
+
 
 
 </script>
